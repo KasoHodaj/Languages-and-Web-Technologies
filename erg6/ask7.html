@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Listing 9-2</title>
+    <script language="javascript">
+        function rndNum(maxNum) {
+            try {
+                const num = Math.random();
+                const result = num * maxNum;
+                if (isNaN(result)) {
+                    throw new Error("Invalid input. Please enter a valid number.");
+                }
+                return Math.ceil(result);
+            } catch (error) {
+                alert(error.message);
+                return -1;
+            }
+        }
+
+        function tellUser(specifiedNum) {
+            alert(rndNum(specifiedNum));
+        }
+    </script>
+</head>
+
+<body>
+
+    Type a number in the area below, then click Calculate.<br>
+    The page will generate a random number between 1 and the
+    number you entered.<br>
+
+    <form>
+        <textarea name="TextNum">10</textarea><br>
+        <input type="button" value="Calculate" onclick="tellUser(TextNum.value)">
+    </form>
+
+</body>
+
+</html>

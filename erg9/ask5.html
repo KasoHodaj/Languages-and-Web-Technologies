@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9-5</title>
+</head>
+
+<body>
+    <label for="text">This is a page with a form that includes:
+        <ul>
+            <li>An input or textbox element</li>
+            <li>A button element</li>
+            <li>A select element (Type: combobox or listbox)</li>
+        </ul>
+        <p>When the user presses the key button while the textbox is not empty, then its existing value will be added
+            <br>to the new select element option, and the textbox area will be cleared.
+        </p>
+    </label>
+
+    <form>
+        <input type="text" id="txt" placeholder="Create new option">
+        <button type="button" id="btn-txt" onclick="addOption()">Select</button>
+        <select id="options">
+            <option value="example">Example</option>
+        </select>
+    </form>
+
+    <script>
+        "use strict";
+        let cnt = 1;
+        function addOption() {
+            let txt = document.getElementById("txt").value;
+            let newOption = document.createElement("option");
+            newOption.text = txt;
+            document.getElementById("options").add(newOption, cnt++);
+            document.getElementById("txt").value = "";
+
+        } 
+    </script>
+</body>
+
+
+</html>
+
+<!-- Find out how many options there are in a specific drop-down list:
+    var x = document.getElementById("mySelect").options.length; -->

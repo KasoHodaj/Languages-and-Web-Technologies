@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9-1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            font-size: 16px;
+            margin: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        img {
+            width: 300px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="images">This is a show of images saved in an array</label> <br><br>
+    <button onclick="previous()">Previous</button>
+    <img id="carousel" src="">
+    <button onclick="next()">Next</button>
+
+    <script>
+        "use strict";
+        let myArray = new Array;
+        myArray[0] = "./pictures/deer.jpg";
+        myArray[1] = "./pictures/eagle.jpg";
+        myArray[2] = "./pictures/fox.jpg";
+        myArray[3] = "./pictures/leopard.jpg";
+        myArray[4] = "./pictures/tiger.jpg";
+        myArray[5] = "./pictures/wolf.jpg"; 
+
+        let cnt = 0;
+        let currentPhoto = document.getElementById("carousel");
+        currentPhoto.src = myArray[cnt];
+
+        function next() {
+            if (cnt < myArray.length - 1) {
+                currentPhoto.src = myArray[++cnt];
+            } else {
+                cnt = 0;
+                currentPhoto.src = myArray[cnt];
+            }
+        }
+
+        function previous() {
+            if (cnt > 0)
+                currentPhoto.src = myArray[--cnt];
+            else
+                currentPhoto.src = myArray[myArray.length - 1];
+        }
+    </script>
+</body>
+
+</html>

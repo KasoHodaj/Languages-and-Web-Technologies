@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        img {
+            width: 20%;
+            height: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="eikona1" src="./images/Sunset.jpg" onmouseenter="changeImg1(this)"
+        onmouseleave="changeImgBack1(this)" /><br />
+    <img id="eikona2" src="./images/SandyBeach.jpg" onmouseenter="changeImg2(this)"
+        onmouseleave="changeImgBack2(this)" /><br />
+    <img id="eikona3" src="./images/PalmBeach.jpg" onmouseenter="changeImg3(this)"
+        onmouseleave="changeImgBack3(this)" /><br />
+
+    <script>
+        "use strict";
+
+        function changeImgBack1(obj) {
+            obj.src = "./images/Sunset.jpg";
+        }
+
+        function changeImgBack2(obj) {
+            obj.src = "./images/SandyBeach.jpg";
+        }
+
+        function changeImgBack3(obj) {
+            obj.src = "./images/PalmBeach.jpg";
+        }
+
+        function changeImg1(obj) {
+            obj.src = "./images/PalmBeach.jpg";
+        }
+
+        function changeImg2(obj) {
+            obj.src = "./images/Sunset.jpg";
+        }
+
+        function changeImg3(obj) {
+            obj.src = "./images/SandyBeach.jpg";
+        }
+    </script>
+</body>
+
+
+</html>

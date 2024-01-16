@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Evaluator</title>
+</head>
+
+<body>
+    <form name="frm" onsubmit="evaluateCode(this)">
+        <input type="text" name="insertCode" size="100">
+        <input type="button" onclick="evaluateCode(frm)" value="Run Code">
+    </form>
+    <input readonly id="output">
+
+    <script>
+        "use strict";
+
+        var a = 15;
+        var b = 'abc';
+        var c = '10';
+        var d = true;
+
+        function evaluateCode(obj) {
+            document.getElementById("output").value = eval(obj.insertCode.value);
+        }
+        //RUN THIS CALCULATION AS IT IS IN THE INPUT(#insertCode) SECTION
+        // a + 10
+        // b + 'def'
+        // c + a
+        // b + d
+        // a + d
+    </script>
+</body>
+
+</html>

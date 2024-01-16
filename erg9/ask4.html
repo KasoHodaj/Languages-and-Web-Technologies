@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9-4</title>
+    <style>
+        img{
+            display: inline-block;
+            width: 15%;
+            
+        }
+    </style>
+</head>
+<body>
+    <label for="text">Pictures and their links</label> <br>
+    <button onclick="generate()">Get Links</button>
+    <div>
+        <img src="./pictures/deer.jpg">
+        <img src="./pictures/eagle.jpg">
+        <img src="./pictures/wolf.jpg">
+    </div>
+    <textarea id="url" cols="115" rows="5"></textarea>
+
+    <script>
+        "use strick";
+        let cnt = 1;
+
+        // The URL of the first <img> element is:
+        // document.images.item(0).src;
+
+        function generate(){
+            if(cnt % 2 === 1){
+                let link1 = document.getElementsByTagName("img")[0].src;
+                let link2 = document.getElementsByTagName("img")[1].src;
+                let link3 = document.getElementsByTagName("img")[2].src;
+                document.getElementById("url").value = "1st image: " + link1  + "\n2nd image: " + link2 + "\n3rd image: " + link3; 
+                
+            }
+            else{
+                document.getElementById("url").value = "";
+                
+            }
+            cnt++;
+            
+            
+        }
+
+    </script>
+</body>
+</html>

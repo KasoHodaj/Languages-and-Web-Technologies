@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <label for="selector">Select you element and next give it a color</label> <br>
+    <select id="selector1">
+        <option value="H1">H1</option>
+        <option value="H2">H2</option>
+        <option value="H3">H3</option>
+        <option value="P">P</option>
+        <option value="SPAN">SPAN</option>
+    </select>
+    <select id="selector2">
+        <option value="RED">RED</option>
+        <option value="GREEN">GREEN</option>
+        <option value="BLUE">BLUE</option>
+    </select>
+
+    <button onclick="selected()">Create</button>
+
+    <script>
+        "use strict";
+        function selected() {
+            let option1 = document.getElementById("selector1").value; //type
+            let option2 = document.getElementById("selector2").value; //color
+
+            let newElement = document.createElement(option1);
+
+            //TODO: missing text content and color
+            newElement.textContent = "This is a new element type " + option1 + " that was just created.";
+            newElement.style.color = option2;
+
+            document.body.appendChild(newElement);
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>The Document Object</h1>
+    <h2>The createElement() Method</h2>
+
+    <p>Create a p element with some text:</p>
+
+    <script>
+        // Create element:
+        const para = document.createElement("p");
+        para.innerText = "This is a paragraph.";
+
+        // Append to body:
+        document.body.appendChild(para);
+    </script>
+
+</body>
+
+</html> -->

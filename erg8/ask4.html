@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .democlass {
+            color: red;
+            background-color: yellow;
+        }
+    </style>
+
+    <script>
+        function colored() {
+            let links = document.getElementsByClassName("anchor");
+            for (let i = 0; i < 3; i++)
+                links[i].classList.add("democlass");
+        }
+    </script>
+
+</head>
+
+<body>
+    <label for="text">Exercise with 3 links: 1 button</label> <br>
+
+
+
+    <!-- function myFunction() {
+        document.getElementById("myH1").setAttribute("class", "democlass");
+    } -->
+
+    <a class="anchor" href="https://google.com">Google</a>
+    <a class="anchor" href="https://youtube.com">Youtube</a>
+    <a class="anchor" href="https://instagram.com">Instagram</a>
+
+    <button onclick="colored()">Color</button>
+</body>
+
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+<style>
+    .democlass {
+        color: red;
+    }
+</style>
+
+<body>
+    <h1>The Document Object</h1>
+    <h2>The createAttribute() and setAttributeNode() Methods</h2>
+
+    <p>Click "Add" to create a class attribute and add it to first h1 element.</p>
+
+    <button onclick="myFunction()">Add</button>
+
+    <script>
+        function myFunction() {
+            // Create a class attribute:
+            const att = document.createAttribute("class");
+
+            // Set a value of the class attribute
+            att.value = "democlass";
+
+            // Add the class attribute to the first h1;
+            document.getElementsByTagName("h1")[0].setAttributeNode(att);
+        }
+    </script>
+
+</body>
+
+</html> -->

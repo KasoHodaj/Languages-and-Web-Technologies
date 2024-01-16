@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="text">Write your text</label> <br>
+    Lower Case: <input type="text" id="text" placeholder="Example" size="50" onkeyup="convert(this)"> <br>
+    Upper Case: <input type="text" id="output" placeholder="EXAMPLE" readonly size="50">
+
+    <script>
+        "use strict";
+        function convert(obj){
+            let txt = obj.value;
+            document.getElementById("output").value  = txt.toUpperCase();
+        }
+    </script>
+</body>
+</html>

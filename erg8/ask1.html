@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+            overflow: hidden;
+        }
+
+        nav li {
+            float: left;
+        }
+
+        nav li a {
+            display: block;
+            padding: 14px 16px;
+            text-decoration: none;
+            color: #333;
+            text-align: center;
+        }
+
+        section {
+            margin-top: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body onmouseover="display(event)">
+    <header>
+        <h1>Main Header</h1>
+        <h2>Subheader 1</h2>
+        <h3>Subheader 1.1</h3>
+    </header>
+
+    <label for="text" id="text">Lab 8 ex:1</label> <br>
+
+    <nav>
+        <ul>
+            <li><a href="https://google.com">Google</a></li>
+            <li><a href="https://youtube.com">Youtube</a></li>
+
+        </ul>
+    </nav>
+
+    <section>
+        <form action="container">
+            <input type="text" id="txt1" readonly> <br>
+            <textarea id="field" cols="30" rows="10" readonly></textarea>
+
+        </form>
+
+        <p>This is a paragraph.</p>
+        <p>Another paragraph here.</p>
+    </section>
+
+    <script>
+        function display(event) {
+            let nameElement = event.target.nodeName;
+            document.getElementById("txt1").value = nameElement;
+
+            let txtArea = event.target.outerHTML;
+            document.getElementById("field").value = txtArea;
+
+        }
+    </script>
+</body>
+
+</html>

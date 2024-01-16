@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1e9e9;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            width: 250px;
+            height: 250px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <label for="text">This is a website that alternates between pictures/gifs.
+        <ul>
+            <li>When The pointer is outside the box image, picture A is shown.</li>
+            <li>
+                When The pointer is moving inside the box image, picture B is shown.
+            </li>
+            <li>
+                When The pointer is moving inside the box image and clicks on the
+                picture, picture C is shown.
+            </li>
+        </ul>
+    </label>
+
+    <div id="container">
+        <img id="image" src="./pictures/snoopy.gif" onmouseover="imageB()" onmouseout="imageA()" onmousedown="imageC()"
+            onmouseup="imageB()" draggable="false" />
+    </div>
+
+    <script>
+        "use strick";
+
+        function imageB() {
+            document.getElementById("image").src = "./pictures/dDuck.gif";
+        }
+        function imageA() {
+            document.getElementById("image").src = "./pictures/snoopy.gif";
+        }
+        function imageC() {
+            document.getElementById("image").src = "./pictures/leoDicaprio.gif";
+        }
+    </script>
+</body>
+
+</html>

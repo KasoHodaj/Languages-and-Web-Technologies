@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9-6</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+
+        table {
+            margin-left: 860px;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        td[data-value="red"] {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        td[data-value="green"] {
+            background-color: #2ecc71;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Array 5x5</h1>
+    <label for="text">
+        Φτιάξτε μία σελίδα HTML/Javascript που θα περιλαμβάνει έναν κενό πίνακα 5 x 5 και ένα κουμπί "Γέμισμα".
+        <br>Όταν ο χρήστης πατάει το κουμπί τα κελιά του πίνακα θα γεμίζουν με τυχαίους αριθμούς από 1 -10.
+        <br>Αν η τιμή είναι μικρότερη του 5 το φόντο του κελιού θα γίνεται κόκκινο ειδάλλως πράσινο.
+    </label>
+    <br>
+    <button id="btn" onclick="generateArray() ">Generate</button>
+    <br>
+    <table id="myTable"></table>
+
+    <script>
+        "use strict";
+
+        function generateArray() {
+            let myArr = new Array(5);
+
+            for (let x = 0; x < myArr.length; x++) {
+                myArr[x] = new Array(5);
+                for (let y = 0; y < myArr[x].length; y++) {
+                    myArr[x][y] = Math.floor(Math.random() * 10) + 1;
+                }
+            }
+
+            console.log(myArr);
+            displayArray(myArr);
+        }
+
+        function displayArray(array) {
+            let table = document.getElementById("myTable");
+            table.innerHTML = "";
+
+            for (let i = 0; i < array.length; i++) {
+                let row = table.insertRow(i);
+                for (let j = 0; j < array[i].length; j++) {
+                    let cell = row.insertCell(j);
+                    cell.textContent = array[i][j];
+
+                    if (array[i][j] < 5) {
+                        cell.style.backgroundColor = "red";
+                    }
+                    else {
+                        cell.style.backgroundColor = "green";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+
+<!--The rows collection returns a collection of all <tr> elements in a table.
+
+    Note: The elements in the collection are sorted as they appear in the source code.
+    
+    Tip: Use the insertRow() method to create a new row (<tr>).
+    
+    Tip: Use the deleteRow() method to remove a row.
+    
+    Tip: Use the insertCell() method to create a new cell (<td>).
+    
+    Tip: Use the deleteCell() method to delete a cell.
+    
+    Tip: Use the cells collection to return a collection of all <td> or <th> elements in a table. -->

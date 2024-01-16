@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-5</title>
+    <style>
+        input{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <label for="text">This page contains 4 text boxes. <br>When a text box is focused its color will turn yellow. 
+        <br>After it gets unfocused, if the text box is filled it will turn white, else it will turn red.
+    </label>
+    
+    <input type="text" id="txt1" placeholder="null" onfocus="focused(this)" onblur="unfocused(this)">
+    <input type="text" id="txt2" placeholder="null" onfocus="focused(this)" onblur="unfocused(this)">
+    <input type="text" id="txt3" placeholder="null" onfocus="focused(this)" onblur="unfocused(this)">
+    <input type="text" id="txt4" placeholder="null" onfocus="focused(this)" onblur="unfocused(this)">
+
+
+    <script>
+        "use strict";
+        
+        function focused(obj){
+            obj.style.backgroundColor = "yellow";
+        }
+
+        function unfocused(obj){
+            let txt = obj.value.trim(); // in case if only space...
+
+            if(txt !== ""){
+                obj.style.backgroundColor = "white";
+            }
+            else{
+                obj.style.backgroundColor = "red";
+            }
+        }   
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9-3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: navy;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 5px 10px;
+            color: rgb(0, 0, 0);
+            display: inline-block;
+            border-radius: 20px;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Page with Links</h1>
+
+    <ul>
+        <li><a href="ask1.html">ask1</a></li>
+        <li><a href="ask2.html">ask2</a></li>
+        <li><a href="https://google.com">Google</a></li>
+        <li><a href="https://facebook.com">Facebook</a></li>
+        <li><a href="https://youtube.com">Youtube</a></li>
+    </ul>
+    <button onclick="Colored()">Color</button>
+
+    <script>
+
+        function Colored() {
+            let links = document.querySelectorAll('a');
+
+            links.forEach(link => { //lamda function
+                if (link.hostname === window.location.hostname) {
+                    link.style.backgroundColor = 'green';
+                } else {
+                    link.style.backgroundColor = 'red';
+                }
+            });
+        }
+
+    </script>
+</body>
+
+</html>
+
+<!-- <script>
+    let numb = document.links.length;
+    document.getElementById("demo").innerHTML = numb;
+</script>
+
+<script>
+    let url = document.links[0].href;
+    document.getElementById("demo").innerHTML = url;
+</script>
+
+<script>
+    let url = document.links.item(0).href;
+    document.getElementById("demo").innerHTML = url;
+</script> -->

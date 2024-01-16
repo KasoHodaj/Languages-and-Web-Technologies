@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-2</title>
+</head>
+
+<body>
+    <ul>
+        <li onclick="display(event)">a</li>
+        <li onclick="display(event)">b</li>
+        <li onclick="display(event)">c</li>
+        <li onclick="display(event)">d</li>
+        <li onclick="display(event)">e</li>
+        <li onclick="display(event)">f</li>
+    </ul>
+
+    <script>
+        function display(event) {
+            event.target.innerHTML = "You chose me!"
+        }
+    </script>
+</body>
+
+</html>

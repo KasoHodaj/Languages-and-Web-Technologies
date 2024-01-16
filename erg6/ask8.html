@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Listing 9-2</title>
+    <script language="javascript">
+        function rndNum(maxNum) {
+            // Place breakpoint here to inspect variables
+            num = Math.random();
+            num = num * maxNum;
+            num = Math.ceil(num);
+            return num;
+        }
+
+        function tellUser(specifiedNum) {
+            // Place breakpoint here to inspect variables
+            alert(rndNum(specifiedNum));
+        }
+    </script>
+</head>
+
+<body>
+
+    Type a number in the area below, then click Calculate.<br>
+    The page will generate a random number between 1 and the
+    number you entered.<br>
+
+    <form>
+        <textarea name="TextNum">10</textarea><br>
+        <input type="button" value="Calculate" onclick="tellUser(TextNum.value)">
+    </form>
+
+</body>
+
+</html>

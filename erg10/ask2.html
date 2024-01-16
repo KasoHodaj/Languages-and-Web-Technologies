@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            font-size: 16px;
+            margin: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        #btn-time{
+            padding: 0 7px;
+        }
+
+        img {
+            width: 300px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="images">This is a show of images saved in an array</label>
+    <br>
+    <input id="time" placeholder="Time in seconds">
+    <button id="btn-time" onclick="setTime()">Set</button>
+    <br>
+    <br>
+
+    <button onclick="stop()">Stop</button>
+    <img id="carousel">
+    <button onclick="resume(1000)">Start</button>
+
+    <script>
+        "use strict";
+        let myArray = new Array;
+        myArray[0] = "./pictures/deer.jpg";
+        myArray[1] = "./pictures/eagle.jpg";
+        myArray[2] = "./pictures/fox.jpg";
+        myArray[3] = "./pictures/leopard.jpg";
+        myArray[4] = "./pictures/tiger.jpg";
+        myArray[5] = "./pictures/wolf.jpg";
+
+        let cnt = 0;
+        let currentPhoto = document.getElementById("carousel");
+        currentPhoto.src = myArray[cnt];
+        let myInterval;
+
+        function setTime() {
+            let time = parseInt(document.getElementById("time").value) * 1000; 
+            resume(time);
+        }
+
+        function resume(time) {
+            stop(); 
+            myInterval = setInterval(start, time);
+        }
+
+        function start() { //start is set by default 1sec time interval slideshow for stability
+            if (cnt < myArray.length - 1) {
+                currentPhoto.src = myArray[++cnt];
+            } else {
+                cnt = 0;
+                currentPhoto.src = myArray[cnt];
+            }
+        }
+
+        function stop() {
+            clearInterval(myInterval);
+        }
+    </script>
+</body>
+
+</html>

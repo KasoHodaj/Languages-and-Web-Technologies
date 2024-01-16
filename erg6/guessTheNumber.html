@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Guess the Number Game</h1>
+    <p>Guess a number between 1 and 100:</p>
+    <input type="text" id="userGuess" />
+    <button onclick="checkGuess()">Submit Guess</button>
+    <p id="result"></p>
+
+    <script>
+        
+        const secretNumber = Math.floor(Math.random() * 100) + 1;
+
+        function checkGuess() {
+           
+            const userGuess = document.getElementById("userGuess").value;
+
+           
+            if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+                alert("Please enter a valid number between 1 and 100.");
+                return;
+            }
+
+            if (userGuess == secretNumber) {
+                document.getElementById("result").innerText = "Congratulations! You guessed the correct number!";
+            } else {
+                document.getElementById("result").innerText = `Wrong guess. The correct number is ${secretNumber}. Try again!`;
+            }
+        }
+    </script>
+
+</body>
+</html>

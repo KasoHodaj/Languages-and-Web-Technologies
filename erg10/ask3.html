@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-3</title>
+</head>
+
+<body>
+    <label for="text">Select a Paragraph:</label>
+
+    <select id="selector">
+        <option value="one">First Paragraph</option>
+        <option value="two">Second Paragraph</option>
+        <option value="three">Third Paragraph</option>
+    </select>
+    <button onclick="makeBold()">Bold</button>
+
+    <br>
+    <br>
+
+    <p id="one">This is the first paragraph</p>
+    <p id="two">This is the second paragraph</p>
+    <p id="three">This is the third paragraph</p>
+
+    <script>
+        "use strict";
+
+        function makeBold() {
+            let selected = document.getElementById("selector");   // Get the select element with id=selector
+            let selectedID = selected.value;  // Get the value of the selected option
+            let selectedPara = document.getElementById(selectedID); // Get the element with id corresponding to the selected value
+            if (selectedPara) {
+                selectedPara.style.fontWeight = "bold";  // Set to bold for the selected paragraph
+                
+            }
+        }
+    </script>
+</body>
+
+</html>
