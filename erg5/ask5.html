@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="text">Press the button to learn about your browser</label> <br>
+    <button onclick="discover()">Explore</button>
+
+    <script>
+        function discover(){
+            let userAgent = window.navigator.userAgent;
+            if(userAgent.includes("Chrome")){
+                window.alert("The browser you are using is Chrome");
+            }
+            else if(userAgent.includes("Firefox")){
+                window.alert("The browser you are using is Firefox");
+            }
+            else if(userAgent.includes("Edg")){
+                window.alert("The browser you are using is Microsoft Edge");
+            }
+            window.alert("The language of the browser is " + window.navigator.language);
+        }
+    </script>
+</body>
+</html>

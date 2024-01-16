@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        input {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #c7baba;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            color:rgb(172, 0, 0);
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #307033;
+        }
+    </style>
+    
+</head>
+<body>
+    <label for="url">Give the URL</label><br>
+    <input type="text" placeholder="https://example.com" size="40" id="url">
+    <button onclick="search()">Search</button>
+    <script>
+        
+
+        function search(){
+            let input = document.getElementById("url").value;
+            window.alert("We will be relocating at " + input);
+            window.location.href = input;
+        }
+    </script>
+
+</body>
+</html>

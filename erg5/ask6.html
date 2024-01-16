@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="url">Give the URL</label> <br>
+    <input type="text" id="url" placeholder="https://example.com">
+    <select id="options">
+        <option value="domain">Domain</option>
+        <option value="path">Path</option>
+    </select>
+    <button onclick="returnData()">Return</button> <br>
+    <input readonly id="display">
+
+    <script>
+        function returnData() {
+            let input = document.getElementById("url").value;
+            let output = document.getElementById("display");
+            let option = document.getElementById("options").value;
+
+            // Use a temporary anchor element to parse the URL
+            let parser = document.createElement('a');
+            parser.href = input;
+
+            if (option === "domain") {
+                output.value = parser.hostname;
+            }
+            else {
+                output.value = parser.pathname;
+            }
+        }
+    </script>
+</body>
+
+</html>

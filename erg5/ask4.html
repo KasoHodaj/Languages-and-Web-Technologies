@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        } 
+        label {
+            font-size: 16px;
+        }
+        input {
+            padding: 8px;
+            margin: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <label for="text">Give the color code to change the Background-color</label> <br>
+    <input type="text" id="colorGrade" placeholder="e.g. #fff">
+    <button onclick="setColor()">Set</button>
+
+    <script>
+        function setColor(){
+            let data = document.getElementById("colorGrade").value;
+            
+            if (!isNaN(data) && data.charAt(0) !== '#') {
+                document.body.style.backgroundColor = '#' + data;
+            } else {
+                document.body.style.backgroundColor = data;
+            }
+        }
+    </script>
+</body>
+</html>

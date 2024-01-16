@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input1" placeholder="e.x. 2 + 2">
+    <button onclick="calculate()">Add</button> <br>
+    <input type="text" id="input2">
+    
+    <script>
+        let value1 = document.getElementById("input1");
+        
+
+        function calculate(){
+            
+               let temp = eval(value1.value); 
+            if(temp > 1000){
+                window.alert("over 1000");
+                input2.value = "";
+                input1.value = "";
+            }
+            else{
+                input2.value = temp;
+            }
+        }
+    </script>
+</body>
+</html>

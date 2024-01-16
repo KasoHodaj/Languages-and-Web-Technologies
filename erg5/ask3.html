@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Resizer</title>
+</head>
+
+<body>
+    <h3>Set the width and height for the new window</h3>
+    <label for="width">Width:</label>
+    <input type="number" id="width">
+
+    <label for="height">Height:</label>
+    <input type="number" id="height">
+    <button onclick="resize()">Set</button>
+
+    <br>
+    <br>
+
+    <label for="text">Give the URL</label> <br>
+    <input type="text" placeholder="https://example.com" size="60" id="url">
+    <button onclick="search()">Search</button>
+
+    <script>
+        "use strict";
+        let newWindow;
+        let x, y;
+
+        function resize() {
+            x = parseInt(document.getElementById("width").value);
+            y = parseInt(document.getElementById("height").value);
+            newWindow = (`width=${x},height=${y}`);
+        }
+
+        function search() {
+            let input = document.getElementById("url").value;
+            window.alert("We will be relocating at " + input);
+            newWindow = window.open(input, "_blank", `width=${x},height=${y}`);
+        }
+    </script>
+</body>
+
+</html>
