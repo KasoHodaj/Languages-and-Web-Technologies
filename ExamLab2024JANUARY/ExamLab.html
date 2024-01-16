@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)https://people.iee.ihu.gr/~dtektoni/exgti/2024/slot4B.html -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Εξετάσεις Εργαστηρίου</title>
+    <style>
+        .c1 {
+            background-color: bisque;
+            color: black;
+        }
+
+        .c2 {
+            background-color: blueviolet;
+            color: white;
+        }
+
+        .c3 {
+            background-color: tomato;
+            color: whitesmoke;
+        }
+
+        .c4 {
+            background-color: black;
+            color: white;
+        }
+
+        .c5 {
+            background-color: thistle;
+            color: black;
+        }
+
+        .c6 {
+            background-color: yellow;
+            color: black;
+        }
+
+        .c7 {
+            background-color: brown;
+            color: white;
+        }
+
+        .c8 {
+            background-color: darkblue;
+            color: white;
+        }
+
+        .c9 {
+            background-color: darkcyan;
+            color: black;
+        }
+    </style>
+
+
+</head>
+
+<body onload="listAll()">
+    <div style="float: left;width:200px;">
+        <h3>Επιλογή Tag</h3>
+        <table id="TagList" onclick="colored()">
+
+        </table>
+    </div>
+    <div style="float: left;width:200px;">
+        <h3>Επιλογή Class</h3>
+        <table id="ClassList" onclick="colored()">
+        </table>
+    </div>
+    <div style="float: left;width:200px;padding-top: 70px;">
+        Id: <input id="TagId" type="text" value="" required>
+        Περιεχόμενο: <textarea id="TagContent" rows="4" cols="50" value="" required> </textarea>
+        <button onclick="previewTag()">Προεπισκόπηση</button>
+        <br>
+        <button onclick="ApplyTag()" id="ApplyButton" style="visibility: hidden;">Εφαρμογή</button>
+    </div>
+    <div id="ContentDiv" style="float: left;width:100%;margin-top: 100px;border :1px solid">
+
+
+    </div>
+
+    <script>
+        var ArrayOfClasses = ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9"];
+        var ArrayOfTags = ["H1", "H2", "H3", "H4", "H5", "H6", "DIV", "P"];
+        var applyButtonTimer;
+        function listAll() { // ΛΥΣΗ: 1
+            let table = document.getElementById("TagList");
+            let table2 = document.getElementById("ClassList");
+
+            for (let i = 0; i < ArrayOfTags.length; i++) {
+                var row = table.insertRow(i);
+                let newTd = document.createElement("td");
+                newTd.textContent = ArrayOfTags[i];
+                row.appendChild(newTd);
+
+            }
+
+            for (let j = 0; j < ArrayOfClasses.length; j++) {
+                var row2 = table2.insertRow(j);
+                let newTd2 = document.createElement("td");
+                newTd2.textContent = ArrayOfClasses[j];
+                row2.appendChild(newTd2);
+            }
+        }
+
+        function colored() { // ΛΥΣΗ: 2
+            let selectedTd = event.target;
+            if (selectedTd.tagName == 'TD') {
+                selectedTd.style.backgroundColor = 'yellow';
+            }
+        }
+
+        function previewTag() { //ΛΥΣΗ 3 & 5 INCOMPLETE
+            let selectedClass = document.querySelector("#ClassList td[style='background-color: yellow;']");
+            let id = document.getElementById("TagId").value;
+            let field = document.getElementById("TagContent").value;
+            let target = document.getElementById("ContentDiv");
+            let selectedTag = document.querySelector("#TagList td[style='background-color: yellow;']");
+
+            clearTimeout(applyButtonTimer);
+
+            if ((id !== "" && field !== "") && selectedTag && selectedClass) {
+                let newElement = document.createElement(selectedTag.tagName);
+                newElement.className = selectedClass.textContent;
+                newElement.id = id;
+                newElement.textContent = field;
+                target.appendChild(newElement);
+                target.appendChild(document.createElement("br"));
+                document.getElementById("ApplyButton").style.visibility = "visible";
+            } else {
+                alert("Please select a tag and a class, and provide an ID and content.");
+            }
+            applyButtonTimer = setTimeout(function () {
+                document.getElementById("ApplyButton").style.visibility = "hidden";
+                document.getElementById("TagId").value = "";
+                document.getElementById("TagContent").value = "";
+            }, 3000);
+        }
+
+        function ApplyTag() { //ΛΥΣΗ 4 & 5
+
+            document.getElementById("TagId").value = "";
+            document.getElementById("TagContent").value = "";
+            clearTimeout(applyButtonTimer);
+            document.getElementById("ApplyButton").style.visibility = "hidden";
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>

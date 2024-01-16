@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Slideshow</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="addRow()">Add</button>
+    <table id="photoTable">
+        <!-- Table headers -->
+        <tr>
+            <th>Photo URL</th>
+            <th>Load Image</th>
+            <th>Image Preview</th>
+        </tr>
+    </table>
+
+    <button onclick="startSlideshow()">Start</button>
+    <button onclick="stopSlideshow()">Stop</button>
+
+    <script>
+        let slideshowInterval;
+        let currentIndex = 0;
+
+        function addRow() {
+            let table = document.getElementById("photoTable");
+            let row = table.insertRow(table.rows.length);
+
+            // Create cells
+            let urlCell = row.insertCell(0);
+            let loadButtonCell = row.insertCell(1);
+            let previewCell = row.insertCell(2);
+
+            // Create input and button elements
+            let urlInput = document.createElement("input");
+            urlInput.type = "text";
+            urlInput.placeholder = "Enter Photo URL";
+            loadButtonCell.appendChild(urlInput);
+
+            let loadButton = document.createElement("button");
+            loadButton.textContent = "Load Image";
+            loadButton.onclick = function () {
+                loadPreview(urlInput.value, previewCell);
+            };
+            loadButtonCell.appendChild(loadButton);
+        }
+
+        function loadPreview(url, previewCell) {
+            let img = new Image();
+            img.src = url;
+            img.onload = function () {
+                previewCell.innerHTML = ""; // Clear previous content
+                previewCell.appendChild(img);
+            };
+            img.onerror = function () {
+                alert("Error loading image. Please check the URL.");
+            };
+        }
+
+        function startSlideshow() {
+            stopSlideshow(); // Stop any existing slideshow before starting a new one
+            let images = document.querySelectorAll("#photoTable img");
+            if (images.length > 0) {
+                slideshowInterval = setInterval(() => {
+                    images[currentIndex].style.display = "none";
+                    currentIndex = (currentIndex + 1) % images.length;
+                    images[currentIndex].style.display = "block";
+                }, 2000); // Change image every 2 seconds (adjust as needed)
+            }
+        }
+
+        function stopSlideshow() {
+            clearInterval(slideshowInterval);
+            currentIndex = 0;
+            let images = document.querySelectorAll("#photoTable img");
+            images.forEach((img) => {
+                img.style.display = "none";
+            });
+        }
+    </script>
+
+</body>
+</html>

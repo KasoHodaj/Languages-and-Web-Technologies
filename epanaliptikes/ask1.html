@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-1</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+
+        table {
+            margin-left: 860px;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        td {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="gameMaster()">Start Round</button>
+    <br>
+    <br>
+    <input type="text" readonly id="selected">
+    <table id="myTable"></table>
+    <br>
+    <input type="text" readonly id="timer">
+
+    <script>
+        "use strict";
+        let selectedNumber; 
+        let correctAttempts = 0;
+        let wrongAttempts = 0;
+        let totalNumbers = 0;
+
+        function gameMaster(){
+
+            selectedNumber = Math.floor(Math.random() * 7) + 3; 
+            displayNum(selectedNumber); 
+
+            startGame();
+            startTimer();
+        }
+
+        function startTimer(){
+            let timerDisplay = document.getElementById("timer");
+            let seconds = 30;
+            
+            function updateTimer(){
+                timerDisplay.value = `Time left: ${seconds} seconds`;
+                if(seconds === 0){
+                    endGame();
+                }
+                else{
+                    seconds --;
+                    setTimeout(updateTimer,1000);
+                }
+            }
+            updateTimer();
+        }
+
+        function endGame() {
+            let score = (correctAttempts / totalNumbers) - (wrongAttempts / (5*5 - totalNumbers));
+            alert(`Game Over! Your Score: ${score.toFixed(2)}`);
+        }
+
+        function displayNum(num){
+            document.getElementById("selected").value = "The number selected is " + num;
+        }
+
+        function startGame(){
+            let myArr = new Array(5);
+            for(let x=0; x<myArr.length; x++){
+                myArr[x] = new Array(5);
+                for(let y=0; y<myArr[x].length; y++){
+                    myArr[x][y] = Math.floor(Math.random()*100)+1;
+
+                }
+            }
+            displayArray(myArr);
+        }
+
+        function displayArray(array){
+            let table = document.getElementById("myTable");
+            table.innerHTML = "";
+
+            for(let i=0; i<array.length; i++){
+                let row = table.insertRow(i);
+                for(let j=0; j<array[i].length; j++){
+                    let cell = row.insertCell(j);
+                    let randomNumber = array[i][j];
+                    cell.textContent = randomNumber;
+                    cell.onclick = () =>{
+                        checkMultiple(randomNumber);
+                    };
+                }
+            }
+        }
+
+        function checkMultiple(number){
+            if(number % selectedNumber === 0){
+                correctAttempts++;
+                event.target.style.backgroundColor = "green";
+            }
+            else{
+                wrongAttempts++; 
+                event.target.style.backgroundColor = "red";
+            }
+            totalNumbers++;
+        }
+
+        
+    </script>
+</body>
+</html>
